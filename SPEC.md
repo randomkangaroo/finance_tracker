@@ -322,6 +322,8 @@ Because budgets are scheduled after the core ledger and import (see §7), this d
 | **M5 – Enhancements**        | Transfers, splits, categorization rules, undo import, reports over time, recurring transactions                                                                                                                             |
 | **M6 – Nice-to-haves**       | Savings goals, multi-currency, forecasting, OFX import, mobile                                                                                                                                                              |
 
+Detailed task lists: [M0 – Setup](docs/tasks/M0-setup.md), [M1 – Core Ledger](docs/tasks/M1-core-ledger.md).
+
 ---
 
 ## 8. Decisions Log

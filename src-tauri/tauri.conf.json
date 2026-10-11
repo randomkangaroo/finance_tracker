@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "finance_tracker",
+  "productName": "finance-tracker",
   "version": "0.1.0",
-  "identifier": "com.moulttho.finance_tracker",
+  "identifier": "com.moulttho.finance-tracker",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",

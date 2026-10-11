@@ -6,19 +6,19 @@
 
 ## 0.1 Prerequisites
 
-- [ ] Install the Rust stable toolchain (`rustup`), with the `rustfmt` and `clippy` components
-- [ ] Install Node.js LTS and npm
-- [ ] Install the Tauri 2 Linux system dependencies (WebKitGTK 4.1, etc.) following the official Tauri prerequisites guide for your distro
-- [ ] **Done when:** `rustc --version`, `cargo clippy --version` and `node --version` all work
+- [x] Install the Rust stable toolchain (`rustup`), with the `rustfmt` and `clippy` components
+- [x] Install Node.js LTS and npm
+- [x] Install the Tauri 2 Linux system dependencies (WebKitGTK 4.1, etc.) following the official Tauri prerequisites guide for your distro
+- [x] **Done when:** `rustc --version`, `cargo clippy --version` and `node --version` all work
 
 ## 0.2 Scaffold the app
 
-- [ ] Generate the project with `npm create tauri-app@latest`, choosing **React + TypeScript** (Vite) and **npm**
-- [ ] Set the app identifier (e.g. `com.<you>.financetracker`), product name and window title in `tauri.conf.json`
-- [ ] Remove the template's demo code (greet command, logos, sample CSS)
-- [ ] Make sure `.gitignore` covers `node_modules/`, `dist/`, `src-tauri/target/` and local `.db` files
-- [ ] Commit `package-lock.json` and `src-tauri/Cargo.lock`
-- [ ] **Done when:** `npm run tauri dev` opens an empty window, and `npm run tauri build` produces a binary
+- [x] Generate the project with `npm create tauri-app@latest`, choosing **React + TypeScript** (Vite) and **npm**
+- [x] Set the app identifier (e.g. `com.<you>.financetracker`), product name and window title in `tauri.conf.json`
+- [x] Remove the template's demo code (greet command, logos, sample CSS)
+- [x] Make sure `.gitignore` covers `node_modules/`, `dist/`, `src-tauri/target/` and local `.db` files
+- [x] Commit `package-lock.json` and `src-tauri/Cargo.lock`
+- [x] **Done when:** `npm run tauri dev` opens an empty window, and `npm run tauri build` produces a binary
 
 ## 0.3 Pin dependency versions
 

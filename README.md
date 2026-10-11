@@ -2,6 +2,22 @@
 
 An app to help track personal finances
 
+## Architecture rules
+
+The Rust backend in `src-tauri/src/` is layered:
+
+| Module      | Contents                                                       |
+| ----------- | -------------------------------------------------------------- |
+| `lib.rs`    | Tauri builder setup: managed state, commands, bindings export  |
+| `main.rs`   | Calls `finance_tracker_lib::run()`                             |
+| `error.rs`  | `AppError`, the error type every command returns               |
+| `commands/` | Thin `#[tauri::command]` wrappers, one file per area           |
+| `domain/`   | Domain types and business logic                                |
+| `db/`       | Connection setup, pragmas, migrations (`db/sql/NNN_*.sql`)     |
+
+- **`domain/` and `db/` must never import `tauri`.** Only `commands/` and `lib.rs` may. This
+  keeps the business logic and database code testable with plain `cargo test`.
+
 ## Pinned dependency versions
 
 Most dependencies use normal semver ranges and are held in place by `Cargo.lock` and

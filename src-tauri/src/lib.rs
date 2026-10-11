@@ -1,4 +1,9 @@
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+// Only `lib.rs` and `commands/` may import `tauri`; `domain/` and `db/` must stay
+// framework-free so they can be unit tested without a running app.
+mod commands;
+mod db;
+mod domain;
+mod error;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {

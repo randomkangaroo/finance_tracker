@@ -20,7 +20,7 @@
 - [ ] Tests: the `CHECK` constraints and foreign keys reject bad data (invalid type, malformed date, an `account_id` that doesn't exist)
 - [ ] **Done when:** migrations apply cleanly to a new database and to the M0 database
 
-### 1.2 Domain types and validation (`core/`)
+### 1.2 Domain types and validation (`domain/`)
 
 - [ ] Types (deriving `Serialize`, `Deserialize`, `specta::Type`): `Account`, `AccountType`, `NewAccount`, `AccountUpdate`; `Category`, `CategoryKind`, `NewCategory`; `Transaction`, `NewTransaction`, `TransactionUpdate`
 - [ ] Dates use `time::Date` in Rust and serialize as `"YYYY-MM-DD"`. Check that the generated TS type is `string`.

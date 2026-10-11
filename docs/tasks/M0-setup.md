@@ -34,20 +34,20 @@
 
 ## 0.4 Rust module layout
 
-- [ ] Create this structure under `src-tauri/src/`:
+- [x] Create this structure under `src-tauri/src/`:
   ```
   lib.rs          // Tauri builder setup: state, commands, bindings export
   main.rs         // calls lib::run()
   error.rs        // AppError
   commands/       // thin #[tauri::command] wrappers, one file per area
-  core/           // domain types + business logic (no Tauri imports)
+  domain/         // domain types + business logic (no Tauri imports)
   db/
     mod.rs        // open(), open_in_memory(), pragmas
     migrations.rs // migration list
     sql/          // 001_*.sql, 002_*.sql, ...
   ```
-- [ ] Rule (write it in the README): **`core/` and `db/` must never import `tauri`**. Only `commands/` and `lib.rs` may.
-- [ ] **Done when:** the app compiles with the empty modules in place
+- [x] Rule (write it in the README): **`domain/` and `db/` must never import `tauri`**. Only `commands/` and `lib.rs` may.
+- [x] **Done when:** the app compiles with the empty modules in place
 
 ## 0.5 Error type
 
@@ -107,7 +107,7 @@
 
 ## 0.11 Test setup
 
-- [ ] Rust: one sample test each in `core/` and `db/` (beyond the ones above) to establish the pattern, e.g. a `test_conn()` helper that returns a migrated in-memory connection
+- [ ] Rust: one sample test each in `domain/` and `db/` (beyond the ones above) to establish the pattern, e.g. a `test_conn()` helper that returns a migrated in-memory connection
 - [ ] Frontend: Vitest with the `jsdom` environment, React Testing Library and `@testing-library/jest-dom`, plus a setup file
 - [ ] Mock the Tauri IPC in tests with `mockIPC` from `@tauri-apps/api/mocks`
 - [ ] Write one component test that renders the `app_info` page against a mocked `app_info` command

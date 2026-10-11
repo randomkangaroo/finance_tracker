@@ -22,15 +22,15 @@
 
 ## 0.3 Pin dependency versions
 
-- [ ] Find a set of `tauri`, `tauri-specta` and `specta` versions that work together (check the `tauri-specta` README and release notes). Pin them exactly in `Cargo.toml` (`=x.y.z`)
-- [ ] Add the Rust dependencies:
+- [x] Find a set of `tauri`, `tauri-specta` and `specta` versions that work together (check the `tauri-specta` README and release notes). Pin them exactly in `Cargo.toml` (`=x.y.z`)
+- [x] Add the Rust dependencies:
   - `rusqlite` with the **`bundled`** feature, so every machine uses the same SQLite version instead of the system one
   - `rusqlite_migration`
   - `time` (with the `serde`, `formatting` and `parsing` features)
   - `serde`, `thiserror`
-- [ ] Add the frontend dependencies: `react-router`, `@tanstack/react-query`
-- [ ] Record the pinned versions and why they were chosen in the README
-- [ ] **Done when:** `cargo build` and `npm install` succeed with no version conflicts
+- [x] Add the frontend dependencies: `react-router`, `@tanstack/react-query`
+- [x] Record the pinned versions and why they were chosen in the README
+- [x] **Done when:** `cargo build` and `npm install` succeed with no version conflicts
 
 ## 0.4 Rust module layout
 

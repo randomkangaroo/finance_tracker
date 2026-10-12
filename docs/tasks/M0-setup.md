@@ -51,10 +51,10 @@
 
 ## 0.5 Error type
 
-- [ ] In `error.rs`, define `AppError` with `thiserror`. Starting variants: `Db(rusqlite::Error)`, `Migration(...)`, `NotFound { entity, id }`, `Validation(String)`, `Conflict(String)`
-- [ ] Implement `Serialize` and `specta::Type` so the frontend gets a structured error (e.g. `{ kind: "Validation", message: "..." }`) rather than a bare string
-- [ ] Add a `pub type AppResult<T> = Result<T, AppError>;` alias
-- [ ] **Done when:** a unit test serializes each variant to the expected JSON shape
+- [x] In `error.rs`, define `AppError` with `thiserror`. Starting variants: `Db(rusqlite::Error)`, `Migration(...)`, `NotFound { entity, id }`, `Validation(String)`, `Conflict(String)`
+- [x] Implement `Serialize` and `specta::Type` so the frontend gets a structured error (e.g. `{ kind: "Validation", message: "..." }`) rather than a bare string
+- [x] Add a `pub type AppResult<T> = Result<T, AppError>;` alias
+- [x] **Done when:** a unit test serializes each variant to the expected JSON shape
 
 ## 0.6 Database connection
 

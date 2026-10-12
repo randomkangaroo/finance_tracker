@@ -17,6 +17,9 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 [build-dependencies]
 tauri-build = { version = "=2.7.2", features = [] }
 
+[dev-dependencies]
+tempfile = "3.27.0"
+
 [dependencies]
 # tauri, specta, specta-typescript and tauri-specta are pinned exactly: specta and
 # tauri-specta are release candidates whose APIs change between RCs, and they must

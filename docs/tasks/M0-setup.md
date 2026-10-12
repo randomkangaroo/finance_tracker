@@ -58,10 +58,10 @@
 
 ## 0.6 Database connection
 
-- [ ] `db::open(path)`: create the parent directory if it's missing, open the connection, apply pragmas (`foreign_keys = ON`, `journal_mode = WAL`), then run migrations
-- [ ] `db::open_in_memory()`: same pragmas and migrations, for tests
-- [ ] In `lib.rs` setup: resolve `app_data_dir()/finance.db`, open it, and register `Mutex<Connection>` as managed state. Startup failures should show a clear error instead of a silent panic.
-- [ ] **Done when:** tests confirm that `PRAGMA foreign_keys` returns `1` on both kinds of connection, and that the DB file appears in the app data dir after launch
+- [x] `db::open(path)`: create the parent directory if it's missing, open the connection, apply pragmas (`foreign_keys = ON`, `journal_mode = WAL`), then run migrations
+- [x] `db::open_in_memory()`: same pragmas and migrations, for tests
+- [x] In `lib.rs` setup: resolve `app_data_dir()/finance.db`, open it, and register `Mutex<Connection>` as managed state. Startup failures should show a clear error instead of a silent panic.
+- [x] **Done when:** tests confirm that `PRAGMA foreign_keys` returns `1` on both kinds of connection, and that the DB file appears in the app data dir after launch
 
 ## 0.7 Migrations
 

@@ -15,6 +15,9 @@ pub enum AppError {
     #[error("database migration failed: {0}")]
     Migration(#[from] rusqlite_migration::Error),
 
+    #[error("file system error: {0}")]
+    Io(#[from] std::io::Error),
+
     #[error("{entity} {id} not found")]
     NotFound { entity: &'static str, id: i64 },
 
@@ -32,6 +35,7 @@ pub type AppResult<T> = Result<T, AppError>;
 pub enum ErrorKind {
     Db,
     Migration,
+    Io,
     NotFound,
     Validation,
     Conflict,
@@ -51,6 +55,7 @@ impl AppError {
         match self {
             AppError::Db(_) => ErrorKind::Db,
             AppError::Migration(_) => ErrorKind::Migration,
+            AppError::Io(_) => ErrorKind::Io,
             AppError::NotFound { .. } => ErrorKind::NotFound,
             AppError::Validation(_) => ErrorKind::Validation,
             AppError::Conflict(_) => ErrorKind::Conflict,
@@ -98,6 +103,15 @@ mod tests {
         assert_eq!(
             to_json(inner.into()),
             json!({ "kind": "Migration", "message": expected })
+        );
+    }
+
+    #[test]
+    fn io_error_serializes_with_kind_and_message() {
+        let inner = std::io::Error::new(std::io::ErrorKind::PermissionDenied, "access denied");
+        assert_eq!(
+            to_json(inner.into()),
+            json!({ "kind": "Io", "message": "file system error: access denied" })
         );
     }
 

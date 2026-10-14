@@ -17,6 +17,11 @@ The Rust backend in `src-tauri/src/` is layered:
 
 - **`domain/` and `db/` must never import `tauri`.** Only `commands/` and `lib.rs` may. This
   keeps the business logic and database code testable with plain `cargo test`.
+- **Never edit a migration once it's committed; add a new one.** Migrations live in
+  `src-tauri/src/db/sql/` as `NNN_description.sql` and are listed in order in
+  `db/migrations.rs`. `rusqlite_migration` records how many have run in
+  `PRAGMA user_version`, so an existing database never re-runs an old file. Editing one
+  would leave existing databases and new ones with different schemas.
 
 ## Pinned dependency versions
 

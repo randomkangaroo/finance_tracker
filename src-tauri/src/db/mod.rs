@@ -66,4 +66,35 @@ mod tests {
         assert_eq!(foreign_keys(&conn), 1);
         assert_eq!(journal_mode(&conn), "wal");
     }
+
+    fn user_version(conn: &Connection) -> i64 {
+        conn.pragma_query_value(None, "user_version", |row| row.get(0))
+            .unwrap()
+    }
+
+    #[test]
+    fn reopening_does_not_rerun_migrations() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("finance.db");
+
+        let conn = open(&path).unwrap();
+        assert_eq!(user_version(&conn), migrations::LATEST_VERSION);
+        conn.execute(
+            "INSERT INTO settings (key, value) VALUES ('currency', 'USD')",
+            [],
+        )
+        .unwrap();
+        drop(conn);
+
+        let conn = open(&path).unwrap();
+        assert_eq!(user_version(&conn), migrations::LATEST_VERSION);
+        let currency: String = conn
+            .query_row(
+                "SELECT value FROM settings WHERE key = 'currency'",
+                [],
+                |row| row.get(0),
+            )
+            .unwrap();
+        assert_eq!(currency, "USD");
+    }
 }

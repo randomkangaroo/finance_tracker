@@ -65,11 +65,11 @@
 
 ## 0.7 Migrations
 
-- [ ] Set up `rusqlite_migration` with SQL files loaded through `include_str!`
-- [ ] `001_settings.sql`: create the `settings` table (`key TEXT PRIMARY KEY, value TEXT NOT NULL`). This proves the pipeline works and is needed in M1 anyway.
-- [ ] Add a test that applies all migrations to an in-memory database and checks they're valid
-- [ ] Document the rule: **never edit a migration once it's committed; add a new one**
-- [ ] **Done when:** the migration test passes, and relaunching the app doesn't re-run migrations (`PRAGMA user_version` stays put)
+- [x] Set up `rusqlite_migration` with SQL files loaded through `include_str!`
+- [x] `001_settings.sql`: create the `settings` table (`key TEXT PRIMARY KEY, value TEXT NOT NULL`). This proves the pipeline works and is needed in M1 anyway.
+- [x] Add a test that applies all migrations to an in-memory database and checks they're valid
+- [x] Document the rule: **never edit a migration once it's committed; add a new one**
+- [x] **Done when:** the migration test passes, and relaunching the app doesn't re-run migrations (`PRAGMA user_version` stays put)
 
 ## 0.8 `tauri-specta` bindings end-to-end
 

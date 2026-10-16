@@ -9,7 +9,7 @@ pub const MIGRATIONS: Migrations<'static> = Migrations::from_slice(MIGRATION_LIS
 
 /// The schema version a fully migrated database reports in `PRAGMA user_version`.
 #[cfg(test)]
-pub const LATEST_VERSION: i64 = MIGRATION_LIST.len() as i64;
+pub const LATEST_VERSION: u32 = MIGRATION_LIST.len() as u32;
 
 #[cfg(test)]
 mod tests {

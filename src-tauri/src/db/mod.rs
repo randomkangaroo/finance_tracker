@@ -35,6 +35,12 @@ fn init(mut conn: Connection) -> AppResult<Connection> {
     Ok(conn)
 }
 
+/// The number of migrations applied to this database, as recorded by
+/// `rusqlite_migration` in `PRAGMA user_version`.
+pub fn schema_version(conn: &Connection) -> AppResult<u32> {
+    Ok(conn.pragma_query_value(None, "user_version", |row| row.get(0))?)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -67,18 +73,13 @@ mod tests {
         assert_eq!(journal_mode(&conn), "wal");
     }
 
-    fn user_version(conn: &Connection) -> i64 {
-        conn.pragma_query_value(None, "user_version", |row| row.get(0))
-            .unwrap()
-    }
-
     #[test]
     fn reopening_does_not_rerun_migrations() {
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("finance.db");
 
         let conn = open(&path).unwrap();
-        assert_eq!(user_version(&conn), migrations::LATEST_VERSION);
+        assert_eq!(schema_version(&conn).unwrap(), migrations::LATEST_VERSION);
         conn.execute(
             "INSERT INTO settings (key, value) VALUES ('currency', 'USD')",
             [],
@@ -87,7 +88,7 @@ mod tests {
         drop(conn);
 
         let conn = open(&path).unwrap();
-        assert_eq!(user_version(&conn), migrations::LATEST_VERSION);
+        assert_eq!(schema_version(&conn).unwrap(), migrations::LATEST_VERSION);
         let currency: String = conn
             .query_row(
                 "SELECT value FROM settings WHERE key = 'currency'",

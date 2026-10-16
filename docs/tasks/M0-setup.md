@@ -73,12 +73,12 @@
 
 ## 0.8 `tauri-specta` bindings end-to-end
 
-- [ ] Add one real command, `app_info`, returning `{ version, dbPath, schemaVersion }`. It should be `async`, per §2.3.1.
-- [ ] Register commands through the `tauri-specta` builder, and export bindings to `src/bindings.ts`
-- [ ] Export the bindings from a **Rust test** (or a small binary), not only on app launch. CI can then regenerate the file without opening a window.
-- [ ] Commit `src/bindings.ts`. Exclude it from ESLint/Prettier.
-- [ ] Show the result of `commands.appInfo()` on a temporary page in the frontend
-- [ ] **Done when:** the window shows the version and DB path, and renaming a field in the Rust struct causes a TypeScript compile error after regenerating
+- [x] Add one real command, `app_info`, returning `{ version, dbPath, schemaVersion }`. It should be `async`, per §2.3.1.
+- [x] Register commands through the `tauri-specta` builder, and export bindings to `src/bindings.ts`
+- [x] Export the bindings from a **Rust test** (or a small binary), not only on app launch. CI can then regenerate the file without opening a window.
+- [x] Commit `src/bindings.ts`. Exclude it from ESLint/Prettier.
+- [x] Show the result of `commands.appInfo()` on a temporary page in the frontend
+- [x] **Done when:** the window shows the version and DB path, and renaming a field in the Rust struct causes a TypeScript compile error after regenerating
 
 ## 0.9 Frontend skeleton
 
@@ -100,7 +100,7 @@
 ## 0.10 Linting, formatting, type checking
 
 - [ ] Rust: a `rustfmt.toml` (defaults are fine) and `cargo clippy --all-targets -- -D warnings` passing
-- [ ] Frontend: ESLint (flat config) with `typescript-eslint` and `eslint-plugin-react-hooks`, plus Prettier
+- [ ] Frontend: ESLint (flat config) with `typescript-eslint` and `eslint-plugin-react-hooks`, plus Prettier. Ignore `src/bindings.ts` in the ESLint config (`.prettierignore` already covers Prettier)
 - [ ] Enable `"strict": true` in `tsconfig.json`
 - [ ] npm scripts: `lint`, `format`, `format:check`, `typecheck` (`tsc --noEmit`), `test`
 - [ ] **Done when:** every check passes on a clean checkout

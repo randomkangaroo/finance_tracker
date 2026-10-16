@@ -30,7 +30,7 @@ pub enum AppError {
 
 pub type AppResult<T> = Result<T, AppError>;
 
-/// The variant name of an [`AppError`], exported to TypeScript as a string union.
+/// Which kind of `AppError` occurred.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Type)]
 pub enum ErrorKind {
     Db,
@@ -41,8 +41,11 @@ pub enum ErrorKind {
     Conflict,
 }
 
-/// The wire format of an [`AppError`]. `AppError` itself holds library errors
-/// that can't be serialized directly, so it converts to this on the way out.
+// The wire format of an `AppError`. `AppError` itself holds library errors that
+// can't be serialized directly, so it converts to this on the way out. The doc
+// comment below is what the frontend sees in `bindings.ts`.
+
+/// An error from a failed command. Switch on `kind`; `message` is readable text.
 #[derive(Serialize, Type)]
 #[serde(rename = "AppError")]
 struct SerializedAppError {

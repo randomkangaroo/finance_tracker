@@ -1,0 +1,25 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-6);
+}
+
+.list dt {
+  color: var(--color-text-muted);
+}
+
+.path {
+  font-family: var(--font-mono);
+  word-break: break-all;
+}

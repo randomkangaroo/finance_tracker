@@ -82,7 +82,7 @@
 
 ## 0.9 Frontend skeleton
 
-- [ ] Create this structure under `src/`:
+- [x] Create this structure under `src/`:
   ```
   main.tsx        // providers: QueryClientProvider, RouterProvider
   bindings.ts     // generated, don't edit
@@ -92,9 +92,9 @@
   lib/            // pure helpers (money, dates); no React
   styles/         // global.css: reset + CSS custom properties (colors, spacing, fonts)
   ```
-- [ ] Set up React Router with an app layout (sidebar nav + content area) and placeholder routes: `/transactions`, `/accounts`, `/accounts/:id`, `/settings`. `/` redirects to `/transactions` until M3 adds the dashboard.
-- [ ] Set up `QueryClient` with sensible defaults for a local app (e.g. no refetch on window focus, `retry: false`)
-- [ ] Add a helper that turns `AppError` into a user-facing message, plus a simple error display component
+- [x] Set up React Router with an app layout (sidebar nav + content area) and placeholder routes: `/transactions`, `/accounts`, `/accounts/:id`, `/settings`. `/` redirects to `/transactions` until M3 adds the dashboard.
+- [x] Set up `QueryClient` with sensible defaults for a local app (e.g. no refetch on window focus, `retry: false`)
+- [x] Add a helper that turns `AppError` into a user-facing message, plus a simple error display component
 - [ ] **Done when:** you can navigate between the placeholder pages and the `app_info` data loads through a query hook
 
 ## 0.10 Linting, formatting, type checking

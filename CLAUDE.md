@@ -43,7 +43,16 @@ Backend layering in `src-tauri/src/`:
 - `db/mod.rs`: `open(path)` and the test-only `open_in_memory()` both go through `init()`. That sets `foreign_keys = ON` (it has to come before migrating), sets `journal_mode = WAL`, then runs migrations. Tests should use `open_in_memory()`.
 - `db/migrations.rs` and `db/sql/NNN_*.sql`: migrations are loaded with `include_str!` and run by `rusqlite_migration`, which tracks progress in `PRAGMA user_version`. **Never edit a committed migration; add a new numbered file.** Each milestone adds only the schema it needs. Seed data (like default categories) also goes in migrations, so it runs exactly once.
 
-Planned but not built yet (M0 0.9): the frontend currently renders a temporary `src/AppInfoPage.tsx`. CI will check `src/bindings.ts` is up to date (0.12). The frontend layout will be `api/` (TanStack Query hooks + query keys), `routes/`, `components/` (`Foo.tsx` + `Foo.module.css`), `lib/` (pure helpers, no React), and `styles/`.
+Frontend layout in `src/`:
+
+- `main.tsx`: providers only (`QueryClientProvider`, `RouterProvider` with `createBrowserRouter`).
+- `api/`: TanStack Query hooks wrapping `commands.*`, one file per area. All query keys live in `api/queryKeys.ts`. The `QueryClient` defaults (`api/queryClient.ts`) turn off retries and focus/reconnect refetching and set `staleTime: Infinity`, because only this app changes the data. So a mutation must invalidate the keys it affects.
+- `routes/`: one folder per screen. `routes/index.tsx` exports the `routes` array (not a router instance), so tests can mount it with `createMemoryRouter`. Every page renders inside `components/AppLayout.tsx` (sidebar + `<Outlet />`).
+- `components/`: shared UI, each as `Foo.tsx` + `Foo.module.css`. Show failures with `<ErrorMessage error={...} />`.
+- `lib/`: pure helpers, no React. `lib/errors.ts` has `isAppError()` and `errorMessage()` for turning anything a command throws into user-facing text.
+- `styles/global.css`: the reset and the design tokens (CSS custom properties for colors, spacing, fonts). Module CSS should use these tokens rather than hard-coded values.
+
+Planned but not built yet: CI will check `src/bindings.ts` is up to date (M0 0.12).
 
 ## Domain rules
 

@@ -45,21 +45,21 @@ A single user running the application locally on their own desktop computer.
 
 ### 2.2 Technology Stack
 
-| Layer                     | Choice                                            | Status                    |
-| ------------------------- | ------------------------------------------------- | ------------------------- |
-| App shell                 | **Tauri 2**                                       | Decided                   |
-| Backend / business logic  | **Rust**                                          | Decided                   |
-| Database                  | **SQLite** (single local file) via **`rusqlite`** | Decided                   |
-| Migrations                | **`rusqlite_migration`**                          | Decided                   |
-| Dates (Rust)              | **`time`**                                        | Decided                   |
-| Rust→TS bindings          | **`tauri-specta`**                                | Decided                   |
-| Frontend                  | **React** + **TypeScript**, built with **Vite**   | Decided                   |
-| Routing                   | **React Router**                                  | Decided                   |
-| Server state / fetching   | **TanStack Query**                                | Decided (revisit if need) |
-| Styling                   | **Plain CSS Modules**                             | Decided                   |
-| Package manager           | **npm**                                           | Decided                   |
-| Frontend tests            | **Vitest** + **React Testing Library**            | Decided                   |
-| Charting                  | —                                                 | **[DECIDE]** by M3        |
+| Layer                    | Choice                                            | Status                    |
+| ------------------------ | ------------------------------------------------- | ------------------------- |
+| App shell                | **Tauri 2**                                       | Decided                   |
+| Backend / business logic | **Rust**                                          | Decided                   |
+| Database                 | **SQLite** (single local file) via **`rusqlite`** | Decided                   |
+| Migrations               | **`rusqlite_migration`**                          | Decided                   |
+| Dates (Rust)             | **`time`**                                        | Decided                   |
+| Rust→TS bindings         | **`tauri-specta`**                                | Decided                   |
+| Frontend                 | **React** + **TypeScript**, built with **Vite**   | Decided                   |
+| Routing                  | **React Router**                                  | Decided                   |
+| Server state / fetching  | **TanStack Query**                                | Decided (revisit if need) |
+| Styling                  | **Plain CSS Modules**                             | Decided                   |
+| Package manager          | **npm**                                           | Decided                   |
+| Frontend tests           | **Vitest** + **React Testing Library**            | Decided                   |
+| Charting                 | —                                                 | **[DECIDE]** by M3        |
 
 Why this fits the requirements:
 
@@ -312,15 +312,15 @@ Because budgets are scheduled after the core ledger and import (see §7), this d
 
 ## 7. Milestones
 
-| Milestone                    | Scope                                                                                                                                                                                                                       |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **M0 – Setup**               | Pin compatible Tauri/specta versions.  Scaffold Tauri + React, create the Rust module layout (commands / domain / db), set up SQLite + migrations and Rust→TS type generation, add linting/formatting, test runners, and CI |
-| **M1 – Core ledger**         | Accounts, categories, manual transaction entry, filtering, balances                                                                                                                                                         |
-| **M2 – CSV import/export**   | Import with column mapping, preview, saved profiles, duplicate detection, CSV export                                                                                                                                        |
-| **M3 – Dashboard & reports** | Dashboard, spending-by-category chart, backup/restore                                                                                                                                                                       |
-| **M4 – Budgets**             | Decide budgeting style, then implement budgets                                                                                                                                                                              |
-| **M5 – Enhancements**        | Transfers, splits, categorization rules, undo import, reports over time, recurring transactions                                                                                                                             |
-| **M6 – Nice-to-haves**       | Savings goals, multi-currency, forecasting, OFX import, mobile                                                                                                                                                              |
+| Milestone                    | Scope                                                                                                                                                                                                                      |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **M0 – Setup**               | Pin compatible Tauri/specta versions. Scaffold Tauri + React, create the Rust module layout (commands / domain / db), set up SQLite + migrations and Rust→TS type generation, add linting/formatting, test runners, and CI |
+| **M1 – Core ledger**         | Accounts, categories, manual transaction entry, filtering, balances                                                                                                                                                        |
+| **M2 – CSV import/export**   | Import with column mapping, preview, saved profiles, duplicate detection, CSV export                                                                                                                                       |
+| **M3 – Dashboard & reports** | Dashboard, spending-by-category chart, backup/restore                                                                                                                                                                      |
+| **M4 – Budgets**             | Decide budgeting style, then implement budgets                                                                                                                                                                             |
+| **M5 – Enhancements**        | Transfers, splits, categorization rules, undo import, reports over time, recurring transactions                                                                                                                            |
+| **M6 – Nice-to-haves**       | Savings goals, multi-currency, forecasting, OFX import, mobile                                                                                                                                                             |
 
 Detailed task lists: [M0 – Setup](docs/tasks/M0-setup.md), [M1 – Core Ledger](docs/tasks/M1-core-ledger.md).
 
@@ -338,7 +338,7 @@ Detailed task lists: [M0 – Setup](docs/tasks/M0-setup.md), [M1 – Core Ledger
 | 2026-10-10 | Learning goals: more experience with known languages (Rust, JavaScript) and with a larger project.                                                   |
 | 2026-10-10 | Tentative stack: Tauri 2 + Rust backend + SQLite, with a React frontend. Rust owns the database and business logic.                                  |
 | 2026-10-10 | Stack confirmed: TypeScript frontend, `tauri-specta` for bindings, `rusqlite` for database access.                                                   |
-| 2026-10-10 | Libraries: `rusqlite_migration`, `time`, Vite, React Router, TanStack Query (may revisit), plain CSS Modules, npm, Vitest + React Testing Library.    |
+| 2026-10-10 | Libraries: `rusqlite_migration`, `time`, Vite, React Router, TanStack Query (may revisit), plain CSS Modules, npm, Vitest + React Testing Library.   |
 | 2026-10-10 | Amount entry: positive amount + Expense/Income toggle.                                                                                               |
 | 2026-10-10 | Default categories finalized (§4.4.1).                                                                                                               |
 

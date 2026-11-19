@@ -19,7 +19,9 @@ export function AppLayout() {
               <NavLink
                 to={to}
                 className={({ isActive }) =>
-                  isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                  isActive
+                    ? `${styles.navLink} ${styles.active}`
+                    : styles.navLink
                 }
               >
                 {label}

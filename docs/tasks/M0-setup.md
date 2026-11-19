@@ -95,23 +95,23 @@
 - [x] Set up React Router with an app layout (sidebar nav + content area) and placeholder routes: `/transactions`, `/accounts`, `/accounts/:id`, `/settings`. `/` redirects to `/transactions` until M3 adds the dashboard.
 - [x] Set up `QueryClient` with sensible defaults for a local app (e.g. no refetch on window focus, `retry: false`)
 - [x] Add a helper that turns `AppError` into a user-facing message, plus a simple error display component
-- [ ] **Done when:** you can navigate between the placeholder pages and the `app_info` data loads through a query hook
+- [x] **Done when:** you can navigate between the placeholder pages and the `app_info` data loads through a query hook
 
 ## 0.10 Linting, formatting, type checking
 
-- [ ] Rust: a `rustfmt.toml` (defaults are fine) and `cargo clippy --all-targets -- -D warnings` passing
-- [ ] Frontend: ESLint (flat config) with `typescript-eslint` and `eslint-plugin-react-hooks`, plus Prettier. Ignore `src/bindings.ts` in the ESLint config (`.prettierignore` already covers Prettier)
-- [ ] Enable `"strict": true` in `tsconfig.json`
-- [ ] npm scripts: `lint`, `format`, `format:check`, `typecheck` (`tsc --noEmit`), `test`
-- [ ] **Done when:** every check passes on a clean checkout
+- [x] Rust: a `rustfmt.toml` (defaults are fine) and `cargo clippy --all-targets -- -D warnings` passing
+- [x] Frontend: ESLint (flat config) with `typescript-eslint` and `eslint-plugin-react-hooks`, plus Prettier. Ignore `src/bindings.ts` in the ESLint config (`.prettierignore` already covers Prettier)
+- [x] Enable `"strict": true` in `tsconfig.json`
+- [x] npm scripts: `lint`, `format`, `format:check`, `typecheck` (`tsc --noEmit`), `test`
+- [x] **Done when:** every check passes on a clean checkout
 
 ## 0.11 Test setup
 
-- [ ] Rust: one sample test each in `domain/` and `db/` (beyond the ones above) to establish the pattern, e.g. a `test_conn()` helper that returns a migrated in-memory connection
-- [ ] Frontend: Vitest with the `jsdom` environment, React Testing Library and `@testing-library/jest-dom`, plus a setup file
-- [ ] Mock the Tauri IPC in tests with `mockIPC` from `@tauri-apps/api/mocks`
-- [ ] Write one component test that renders the `app_info` page against a mocked `app_info` command
-- [ ] **Done when:** `cargo test` and `npm test` both pass
+- [x] Rust: one sample test each in `domain/` and `db/` (beyond the ones above) to establish the pattern, e.g. a `test_conn()` helper that returns a migrated in-memory connection
+- [x] Frontend: Vitest with the `jsdom` environment, React Testing Library and `@testing-library/jest-dom`, plus a setup file
+- [x] Mock the Tauri IPC in tests with `mockIPC` from `@tauri-apps/api/mocks`
+- [x] Write one component test that renders the `app_info` page against a mocked `app_info` command
+- [x] **Done when:** `cargo test` and `npm test` both pass
 
 ## 0.12 CI (GitHub Actions)
 

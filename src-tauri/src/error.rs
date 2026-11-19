@@ -8,6 +8,9 @@ use serde::{Serialize, Serializer};
 use specta::{Type, Types, datatype::DataType};
 
 #[derive(Debug, thiserror::Error)]
+// `NotFound`, `Validation` and `Conflict` are only built in tests until M1.
+// `expect` (unlike `allow`) warns once they're used, so this can't go stale.
+#[cfg_attr(not(test), expect(dead_code, reason = "variants first used in M1"))]
 pub enum AppError {
     #[error("database error: {0}")]
     Db(#[from] rusqlite::Error),

@@ -25,6 +25,13 @@ pub fn open_in_memory() -> AppResult<Connection> {
     init(Connection::open_in_memory()?)
 }
 
+/// A migrated in-memory connection for tests. Panics if setup fails, so tests
+/// can start with `let conn = db::test_conn();`.
+#[cfg(test)]
+pub fn test_conn() -> Connection {
+    open_in_memory().expect("failed to open a migrated in-memory database")
+}
+
 fn init(mut conn: Connection) -> AppResult<Connection> {
     // SQLite leaves foreign keys off by default, and the setting can't be
     // changed inside a transaction, so it must be set before migrating.
@@ -57,8 +64,22 @@ mod tests {
 
     #[test]
     fn in_memory_connection_enforces_foreign_keys() {
-        let conn = open_in_memory().unwrap();
+        let conn = test_conn();
         assert_eq!(foreign_keys(&conn), 1);
+    }
+
+    #[test]
+    fn settings_keys_are_unique() {
+        let conn = test_conn();
+        let insert = "INSERT INTO settings (key, value) VALUES ('currency', ?1)";
+        conn.execute(insert, ["USD"]).unwrap();
+
+        let err = conn.execute(insert, ["EUR"]).unwrap_err();
+
+        assert_eq!(
+            err.sqlite_error_code(),
+            Some(rusqlite::ErrorCode::ConstraintViolation)
+        );
     }
 
     #[test]

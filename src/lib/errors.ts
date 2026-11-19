@@ -16,7 +16,11 @@ export function isAppError(e: unknown): e is AppError {
     return false;
   }
   const { kind, message } = e as Record<string, unknown>;
-  return typeof kind === "string" && ERROR_KINDS.has(kind) && typeof message === "string";
+  return (
+    typeof kind === "string" &&
+    ERROR_KINDS.has(kind) &&
+    typeof message === "string"
+  );
 }
 
 /**

@@ -22,6 +22,7 @@ npx vitest run src/lib                     # tests under one path
 npm run lint                               # ESLint (type-aware typescript-eslint + react-hooks)
 npm run typecheck                          # tsc --noEmit for src/ and vite.config.ts
 npm run format                             # Prettier --write (format:check to only check)
+npm run check                              # every check, frontend + Rust + bindings up to date; run before committing
 
 cd src-tauri
 cargo test                                 # all Rust tests
@@ -29,10 +30,10 @@ cargo test db::tests::                     # tests in one module
 cargo test file_connection_enforces        # a single test, matched by name substring
 cargo test export_bindings                 # regenerate src/bindings.ts without launching the app
 cargo fmt --check
-cargo clippy --all-targets -- -D warnings  # the lint bar CI will enforce
+cargo clippy --all-targets -- -D warnings  # the lint bar (warnings are errors)
 ```
 
-GitHub Actions CI isn't set up yet (M0 0.12).
+There is no CI: M0 0.12 is deferred because no GitHub Actions runners are available. `npm run check` is the only gate, so run it before committing. It ends with `git diff --exit-code src/bindings.ts`, which fails if the bindings weren't regenerated and committed.
 
 ## Architecture
 
@@ -63,8 +64,6 @@ Frontend tests:
 - `src/test/setup.ts` loads the jest-dom matchers and, after each test, runs Testing Library's `cleanup()` and Tauri's `clearMocks()`.
 - Mock commands with `mockIPC` from `@tauri-apps/api/mocks`, keyed on the snake_case command name (`"app_info"`). A failed command is `Promise.reject(appError)`.
 - Render pages with `renderRoute(path)` from `src/test/render.tsx`. It mounts the real routes in a memory router with a fresh `QueryClient`.
-
-Planned but not built yet: CI will check `src/bindings.ts` is up to date (M0 0.12).
 
 ## Domain rules
 

@@ -115,6 +115,8 @@
 
 ## 0.12 CI (GitHub Actions)
 
+> **Deferred (2026-11-19):** no GitHub Actions runners are available. Until then, `npm run check` runs the same checks locally, including the bindings check.
+
 - [ ] Workflow on push and pull request, Ubuntu runner, with the Tauri Linux dependencies installed, plus caching for Cargo and npm
 - [ ] **Rust job:** `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, `cargo test`
 - [ ] **Frontend job:** `npm ci`, `format:check`, `lint`, `typecheck`, `test`
@@ -123,9 +125,9 @@
 
 ## 0.13 Documentation
 
-- [ ] README: prerequisites, dev commands (`npm run tauri dev`, tests, lint), where the database file lives, and how to regenerate bindings
-- [ ] README: the architecture rules (layering, never editing old migrations, money as integer minor units)
-- [ ] Link `SPEC.md` and `docs/tasks/`
+- [x] README: prerequisites, dev commands (`npm run tauri dev`, tests, lint), where the database file lives, and how to regenerate bindings
+- [x] README: the architecture rules (layering, never editing old migrations, money as integer minor units)
+- [x] Link `SPEC.md` and `docs/tasks/`
 
 ## M0 exit criteria
 

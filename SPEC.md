@@ -341,6 +341,7 @@ Detailed task lists: [M0 – Setup](docs/tasks/M0-setup.md), [M1 – Core Ledger
 | 2026-10-10 | Libraries: `rusqlite_migration`, `time`, Vite, React Router, TanStack Query (may revisit), plain CSS Modules, npm, Vitest + React Testing Library.   |
 | 2026-10-10 | Amount entry: positive amount + Expense/Income toggle.                                                                                               |
 | 2026-10-10 | Default categories finalized (§4.4.1).                                                                                                               |
+| 2026-11-19 | CI (GitHub Actions, M0 0.12) deferred: no runners available. `npm run check` runs the same checks locally until CI is set up.                        |
 
 ## 9. Open Questions
 
